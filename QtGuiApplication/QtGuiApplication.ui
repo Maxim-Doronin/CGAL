@@ -103,7 +103,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>170</y>
+      <y>208</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -116,7 +116,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>200</y>
+      <y>238</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -129,7 +129,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>230</y>
+      <y>268</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -142,13 +142,61 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>260</y>
+      <y>298</y>
       <width>111</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>Create sphere eps</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buildBSpline3Button">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>358</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Build BSpline3</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buildBSpline2Button">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>388</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Build BSpline2</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="moveButton">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>170</y>
+      <width>75</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>mv</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

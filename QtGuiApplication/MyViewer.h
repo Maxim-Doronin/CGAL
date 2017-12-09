@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QMouseEvent>
 
+#include "BSpline.h"
 #include "typedefs.h"
 
 class MyViewer : public QGLViewer { 
@@ -13,6 +14,9 @@ class MyViewer : public QGLViewer {
      Points3 points;
 
      bool isRemovePointMode = false;
+     bool isMovePointMode = false;
+     bool isSpline2Shown = false;
+     bool isSpline3Shown = false;
 
      void removeAllPoints();
 
@@ -21,6 +25,9 @@ class MyViewer : public QGLViewer {
      void createFilledSphere();
      void createSphereEps();
 
+     void buildBSpline3();
+     void buildBSpline2();
+
  protected:  
      virtual void draw();  
      virtual void init(); 
@@ -28,6 +35,10 @@ class MyViewer : public QGLViewer {
      virtual void postSelection(const QPoint &point);
      std::vector<int> MyViewer::getSelectedPointIds(const QPoint &point);
      virtual void mousePressEvent(QMouseEvent *event);
+     virtual void mouseMoveEvent(QMouseEvent *event);
+     virtual void mouseReleaseEvent(QMouseEvent *event);
+     int movePointIndex_;
+     QPoint* oldMousePosition_;
 
      Point_3 getPointInSphere();
 

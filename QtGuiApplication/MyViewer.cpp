@@ -11,6 +11,13 @@ void MyViewer::draw() {
         glVertex3f(points[i].x(), points[i].y(), points[i].z()); 
     } 
     glEnd(); 
+
+    if (isSpline2Shown) {
+        buildBSpline2();
+    }
+    if (isSpline3Shown) {
+        buildBSpline3();
+    }
 } 
 
 void MyViewer::init() {
@@ -60,8 +67,52 @@ void MyViewer::mousePressEvent(QMouseEvent *event) {
         }
 
         update();
+    }
+    else if (isMovePointMode) {
+        const QPoint point = event->pos();
+        std::vector<int> selected = getSelectedPointIds(point);
+
+        if (selected.size() > 0) {
+            movePointIndex_ = selected[0];
+        }
+        oldMousePosition_ = new QPoint(point);
     } else {
         QGLViewer::mousePressEvent(event);
+    }
+}
+
+void MyViewer::mouseMoveEvent(QMouseEvent *event) {
+    if (isMovePointMode) {
+        if (movePointIndex_ != -1) {
+            int x = event->x();
+            int y = event->y();
+
+            int dx = x - oldMousePosition_->x();
+            int dy = y - oldMousePosition_->y();
+
+            delete oldMousePosition_;
+            oldMousePosition_ = new QPoint(event->pos());
+
+            Point_3 oldPoint = points.at(movePointIndex_);
+            points.at(movePointIndex_) = Point_3(oldPoint.x() + 0.01f * dx, 
+                oldPoint.y() + 0.01f * dy, oldPoint.z());
+
+            update();
+        }
+    }
+    else {
+        QGLViewer::mouseMoveEvent(event);
+    }
+}
+
+void MyViewer::mouseReleaseEvent(QMouseEvent *event) {
+    if (isMovePointMode) {
+        //movePoint = nullptr;
+        movePointIndex_ = -1;
+        oldMousePosition_ = nullptr;
+    }
+    else {
+        QGLViewer::mouseReleaseEvent(event);
     }
 }
 
@@ -133,4 +184,14 @@ void MyViewer::createSphereEps() {
         float z_eps = static_cast <float> (rand()) / static_cast <float> (RAND_MAX) * SPHERE_EPS - SPHERE_EPS / 2;
         points.push_back(Point_3(point.x() / norm + x_eps, point.y() / norm + y_eps, point.z() / norm + z_eps));
     }
+}
+
+void MyViewer::buildBSpline3() {
+    BSpline bSpline = BSpline(&points, false);
+    bSpline.drawSplineCurve();
+}
+
+void MyViewer::buildBSpline2() {
+    BSpline bSpline = BSpline(&points, true);
+    bSpline.drawSplineCurve();
 }

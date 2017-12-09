@@ -68,6 +68,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BSpline.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_QtGuiApplication.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -109,6 +110,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BSpline.h" />
     <ClInclude Include="GeneratedFiles\ui_QtGuiApplication.h" />
     <ClInclude Include="MyViewer.h" />
     <ClInclude Include="typedefs.h" />

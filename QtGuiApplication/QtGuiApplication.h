@@ -15,6 +15,7 @@ public:
     public slots: 
     void addPoint();
     void addPoint(Point_3 point);
+    void movePoint();
     void removePoint();
     void removeAllPoints();
 
@@ -22,6 +23,8 @@ public:
     void createFilledCube();
     void createFilledSphere();
     void createSphereEps();
+    void buildBSpline3();
+    void buildBSpline2();
 private:
     Ui::QtGuiApplicationClass ui;
 };
